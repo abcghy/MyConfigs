@@ -12,6 +12,8 @@ set incsearch
 set ignorecase
 set smartcase
 
+filetype plugin on
+
 noremap <LEADER><CR> :nohlsearch<CR>
 
 noremap <LEADER>ws :split<CR>
@@ -22,7 +24,12 @@ noremap <LEADER>wk <C-w>k
 noremap <LEADER>wl <C-w>l
 noremap <LEADER>wd :close<CR>
 " todo: 在 Markdown 里面勾选将 - [ ] 变成 - [x]
-noremap <LEADER>cc 0f[lclx<Esc>
+"noremap <LEADER>cc 0f[lclx<Esc>
+" 进入写作模式
+noremap <LEADER>gy :Goyo<CR>
+
+""" NerdTree
+noremap tt :NERDTreeToggle<CR>
 
 noremap J 5j
 noremap K 5k
@@ -45,6 +52,8 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-startify'
+Plug 'junegunn/goyo.vim'
+Plug 'preservim/nerdcommenter'
 
 call plug#end()
 
