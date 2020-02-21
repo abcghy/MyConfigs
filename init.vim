@@ -25,11 +25,6 @@ noremap <LEADER>wl <C-w>l
 noremap <LEADER>wd :close<CR>
 " todo: 在 Markdown 里面勾选将 - [ ] 变成 - [x]
 "noremap <LEADER>cc 0f[lclx<Esc>
-" 进入写作模式
-noremap <LEADER>gy :Goyo<CR>
-
-""" NerdTree
-noremap tt :NERDTreeToggle<CR>
 
 noremap J 5j
 noremap K 5k
@@ -58,6 +53,12 @@ Plug 'preservim/nerdcommenter'
 call plug#end()
 
 color snazzy
+
+" 进入写作模式
+noremap <LEADER>gy :Goyo<CR>
+
+""" NerdTree
+noremap tt :NERDTreeToggle<CR>
 
 """ Tagbar
 let g:tagbar_map_showproto = "K"
