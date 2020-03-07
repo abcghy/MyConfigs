@@ -1,7 +1,13 @@
 map <Space> <Nop>
-let mapleader=" "
+let g:mapleader=" "
 
 syntax on
+set autoindent
+set expandtab        "使用空格而不是tab制表符
+set softtabstop =4
+set shiftwidth  =4
+set shiftround
+
 set number
 set relativenumber
 set cursorline
@@ -37,13 +43,33 @@ noremap <LEADER>wd :close<CR>
 noremap J 5j
 noremap K 5k
 
+" 更改缩进的时候，还是保持选择状态
+xnoremap < <gv
+xnoremap > >gv
+
 map s <nop>
 map S :w<CR>
 map R :source $MYVIMRC<CR>
 
+" 使用 <CTRL-p> 和 <CTRL-n> 在 command 里执行上下
+cnoremap <c-n> <down>
+cnoremap <c-p> <up>
+
 imap jj <Esc>
 
 "map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+"
+
+""" 回到原来退出的位置
+autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+autocmd InsertLeave,WinEnter * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
+
+""" 复制和粘贴都剪切板里过
+set clipboard=unnamedplus
 
 call plug#begin('~/.vim/plugged')
 
@@ -71,6 +97,13 @@ noremap <LEADER>gy :Goyo<CR>
 
 """ NerdTree
 noremap tt :NERDTreeToggle<CR>
+noremap tr :NERDTreeFind<CR>
+
+""" fzf
+noremap <leader>ff :FZF<CR>
+
+""" NerdCommenter
+map <leader>/ <leader>c<space>
 
 """ Tagbar
 let g:tagbar_map_showproto = "K"
@@ -141,7 +174,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+"nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
