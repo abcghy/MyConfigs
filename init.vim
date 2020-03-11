@@ -87,6 +87,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
