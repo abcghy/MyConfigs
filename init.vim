@@ -78,7 +78,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'connorholyday/vim-snazzy'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'jceb/vim-orgmode'
-Plug 'preservim/nerdtree'
+"Plug 'preservim/nerdtree'
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'kristijanhusak/defx-icons'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
@@ -97,8 +105,38 @@ color snazzy
 noremap <LEADER>gy :Goyo<CR>
 
 """ NerdTree
-noremap tt :NERDTreeToggle<CR>
-noremap tr :NERDTreeFind<CR>
+"noremap tt :NERDTreeToggle<CR>
+"noremap tr :NERDTreeFind<CR>
+"
+
+""" defx
+call defx#custom#option('_', {
+      \ 'winwidth': 30,
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ 'show_ignored_files': 1,
+      \ 'buffer_name': '',
+      \ 'toggle': 1,
+      \ 'resume': 1
+      \ })
+noremap tt :Defx<CR>
+
+autocmd FileType defx call s:defx_mappings()
+
+function! s:defx_mappings() abort
+  nnoremap <silent><buffer><expr> l     <SID>defx_toggle_tree()                    " 打开或者关闭文件夹，文件
+  nnoremap <silent><buffer><expr> .     defx#do_action('toggle_ignored_files')     " 显示隐藏文件
+  nnoremap <silent><buffer><expr> <C-r>  defx#do_action('redraw')
+endfunction
+
+function! s:defx_toggle_tree() abort
+    " Open current file, or toggle directory expand/collapse
+    if defx#is_directory()
+        return defx#do_action('open_or_close_tree')
+    endif
+    return defx#do_action('multi', ['drop'])
+endfunction
+
 
 """ fzf
 noremap <leader>ff :FZF<CR>
