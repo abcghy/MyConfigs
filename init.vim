@@ -96,6 +96,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
+"" Python Semantic Highlight
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 call plug#end()
 
