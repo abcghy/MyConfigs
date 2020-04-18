@@ -98,6 +98,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 "" Python Semantic Highlight
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'udalov/kotlin-vim'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -113,7 +115,7 @@ noremap <LEADER>gy :Goyo<CR>
 
 """ defx
 call defx#custom#option('_', {
-      \ 'winwidth': 30,
+      \ 'winwidth': 40,
       \ 'split': 'vertical',
       \ 'direction': 'topleft',
       \ 'show_ignored_files': 1,
