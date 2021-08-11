@@ -299,3 +299,12 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+""" My Own
+function FormatJson()
+    %! jq .
+    set filetype=json
+    set foldmethod=syntax
+endfunction
+
+nnoremap <silent> <space>fj :call FormatJson()<CR>
