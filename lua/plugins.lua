@@ -50,5 +50,7 @@ return require('packer').startup(function()
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  use 'kdheepak/lazygit.nvim'
+
 end)
 
