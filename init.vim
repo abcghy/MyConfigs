@@ -16,14 +16,16 @@ filetype indent on
 filetype plugin indent on
 set autoindent
 set expandtab "use space not tab
-" set softtabstop=2
-" set shiftwidth=2
-" set shiftround
+set softtabstop=2
+set shiftwidth=2
+set shiftround
 
 set number
 set relativenumber
 set cursorline
+hi CursorLine cterm=NONE ctermbg=240
 set cursorcolumn
+hi CursorColumn cterm=NONE ctermbg=238
 
 set clipboard=unnamedplus
 
